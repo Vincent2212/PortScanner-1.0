@@ -11,7 +11,7 @@ for x in range(1, how_many):
     }
     response = requests.post(url, data=data).text
     if 'src="/img/flag_green.gif' in response:
-        print(f"Port {x} is open on {ip}.")
+        print(f"Port {x} is open on {ip}")
         break
     else:
-        print(f"Port {x} is closed.")
+        print(f"Port {x} is closed")
