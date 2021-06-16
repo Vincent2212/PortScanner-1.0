@@ -13,5 +13,8 @@ for x in range(1, how_many):
     if 'src="/img/flag_green.gif' in response:
         print(f"Port {x} is open on {ip}")
         break
+    elif "Invalid remote address." in response:
+        print("Invalid IP or url.")
+        break
     else:
         print(f"Port {x} is closed")
