@@ -1,9 +1,9 @@
-# portscanner.py <Number Of Ports To Scan> <URL or IP>
+# PortScanner 1.3
 import requests
 import sys
 url = "https://ports.yougetsignal.com/check-port.php"
-how_many = int(sys.argv[1])
-ip = sys.argv[2]
+how_many = int(input("Ports: "))
+ip = input("Enter a IP or URL: ")
 open_ports = []
 if not ip:
     print("No value given.")
