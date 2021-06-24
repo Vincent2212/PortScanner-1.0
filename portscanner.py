@@ -1,7 +1,13 @@
 import requests
+import sys
 url = "https://ports.yougetsignal.com/check-port.php"
 how_many = int(input("How many ports to check? ")) # Enter a range starting from 1
 ip = input("Enter a IP Address: ")
+open_ports = []
+if not ip:
+    print("No value given.")
+    sys.exit()
+print(f"Checking ports on {ip}...")
 
 for x in range(1, how_many + 1):
     data = {
@@ -11,10 +17,14 @@ for x in range(1, how_many + 1):
     }
     response = requests.post(url, data=data).text
     if 'src="/img/flag_green.gif' in response:
-        print(f"Port {x} is open on {ip}")
+        open_ports.append(x)
         
     elif "Invalid remote address." in response:
         print("Invalid IP or url.")
         break
-    else:
-        print(f"Port {x} is closed")
+
+if len(open_ports) == 0:
+    print(f"Found {len(open_ports)} open ports on {ip}")
+    sys.exit()
+
+print(f"Found {len(open_ports)} open ports on {ip}\n{open_ports}")
